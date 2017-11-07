@@ -1,0 +1,77 @@
+<!--
+  Generated template for the PushnotificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color ="color1">
+    <ion-title>Chart</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col>
+      <button class="button button-assertive button-block"  class="bounce-animation" id="line" (click)="ngIfCtrl($event)"> Line
+      </button>
+    </ion-col>
+    <ion-col>
+      <button class="button  button-dark customBtn"  class="bounce-animation" id="bar" (click)="ngIfCtrl($event)"> Bar
+      </button>
+    </ion-col>
+    <ion-col>
+      <button class="button  button-dark customBtn"  class="bounce-animation" id="pie" (click)="ngIfCtrl($event)"> Pie
+      </button>
+    </ion-col>
+  </ion-row>
+
+  <div class="row" >
+    <div  *ngIf="!hideline" class="col-md-6">
+      <div style="display: block;">
+      <canvas  baseChart height="400"
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+                </canvas>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row" >
+    <div  *ngIf="!hidebar" class="col-md-6">
+      <div style="display: block">
+        <canvas baseChart
+                [datasets]="barChartData"
+                [labels]="barChartLabels"
+                [options]="barChartOptions"
+                [legend]="barChartLegend"
+                [chartType]="barChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <button (click)="randomize()">Update</button>
+    </div>
+  </div>
+  <div class="row" >
+    <div *ngIf="!hidepie" class="col-md-6">
+      <div style="display: block">
+      <canvas baseChart
+                  [data]="doughnutChartData"
+                  [labels]="doughnutChartLabels"
+                  [chartType]="doughnutChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    </div>
+  </div>
+</ion-content>
